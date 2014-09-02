@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<style type="text/css">
+	body{ height:400px;}
+	#pseudoWindow{ position:absolute; top:160px; left:45%;}
+	#outerWrapper{ position:absolute; top:0; left:0; height:200px; width:100px; overflow: hidden; background-color:#fff; border-top:4px solid #666; border-left:4px solid #666; border-right:4px solid #ccc; border-bottom:4px solid #ccc;	}
+	#innerWrapper{ position:absolute; top:0; left:0; padding:5px; font:10px Verdana, Geneva, sans-serif;}
+	#myp{ margin-top:0;}
+</style>
+</head>
+<body>
+<div id="pseudoWindow">
+	<div id="outerWrapper">
+    	<div id="innerWrapper" style="top:0;">
+        	<p id="myp">
+            	sdlfj dflj dflj ldflj fdlfjl fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj fdlfj lfdfjl fdlfjl fdlj  fdf ldfjld  fdj 
+            </p>
+        </div>
+    </div>
+</div>
+<div class="box" id="box">
+</div>
+<script type="text/javascript" src="js/design_patten.js"></script>
+<script type="text/javascript" src="js/scrollBars.js"></script>
+<script type="text/javascript" src="js/eventsManager.js"></script>
+<script type="text/javascript" src="js/DHTML3API.JS"></script>
+<script type="text/javascript">
+	DHTMLAPI.init();
+	function initScrollbars(){   
+		scrollBars[0] = new scrollBar('pseudoWindow','outerWrapper','innerWrapper');
+		scrollBars[0].appendScroll();
+		}
+addOnLoadEvent(function(){
+	setTimeout('initScrollbars()',0);
+	}
+	);
+</script>
+</body>
+</html>

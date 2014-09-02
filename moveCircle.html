@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<script type="text/javascript" src="js/DHTML3API.JS"></script>
+<script type="text/javascript" src="js/eventsManager.js"></script>
+<script type="text/javascript" src="js/dom.js"></script>
+<script type="text/javascript" src="js/event.js"></script>
+<style type="text/css">
+	.box{ width:960px; height:100px; border:10px solid red; border-radius:10px; margin:0 auto; position:absolute;}
+</style>
+</head>
+<body>
+<div id="rounder" style="width:10px; height:10px; background-color:#c00; border:1pxs solid #000; position:absolute;"></div>
+<script type="text/javascript">
+var anime = new Object;
+function initAnime(){
+	anime = {
+		elemID:'',
+		xStart:0,
+		yStart:0,
+		xCurr:0,
+		yCurr:0,
+		next:1,
+		pts:1,
+		radius:1,
+		interval:null
+		}
+	}
+function initCircAnime(elemID,startX,startY,pts,radius){
+	initAnime();
+	anime.elemID = elemID;
+	anime.xCurr = anime.xStart = startX;
+	anime.yCurr = anime.yStart = startY;
+	anime.pts = pts;
+	anime.radius = radius;
+	document.getElementById(anime.elemID).style.left = startX + 'px';
+	document.getElementById(anime.elemID).style.top = startY + 'px';
+	anime.interval = setInterval("doCircAnimation()",10);
+	}
+function doCircAnimation(){
+	if(anime.next < anime.pts){
+		var x = anime.xCurr + Math.round(Math.cos(anime.next * (Math.PI/(anime.pts/2)))*anime.radius);
+		var y = anime.yCurr + Math.round(Math.sin(anime.next * (Math.PI/(anime.pts/2)))*anime.radius);
+		document.getElementById(anime.elemID).style.left = x + 'px';
+		document.getElementById(anime.elemID).style.top = y + 'px';
+		anime.xCurr = x;
+		anime.yCurr = y;
+		anime.next++;
+		}
+	else{
+		
+		document.getElementById(anime.elemID).style.left = anime.xStart + 'px';
+		document.getElementById(anime.elemID).style.top = anime.yStart + 'px';
+		anime.next = 1;
+		//clearInterval(anime.interval)
+		}
+	}
+initAnime();
+ initCircAnime('rounder',600,200,99,10);
+</script>
+</body>
+</html>

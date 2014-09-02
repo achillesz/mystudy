@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+* { margin:0; padding:0; }
+ul { list-style:none; border:5px solid black; float:left; padding:50px; margin:100px; background-color:red; }
+LI { padding:15px; background-color:#CCC; border:2px solid #000; margin-bottom:15px; }
+li a { display:block; border:1px solid #fff; }
+#test { width:200px; height:auto; overflow:scroll; }
+</style>
+</head>
+<body>
+<ul>
+  <li><a href="#">导航1</a></li>
+  <li><a href="#">导航2</a></li>
+  <li><a href="#">导航3</a></li>
+  <li><a href="#">导航4</a></li>
+</ul>
+<div id="test"></div>
+<script type="text/javascript">
+var EventUtil = {
+	getEvent: function(event){
+			return event ? event : window.event;
+		},
+	getTarget: function(event){
+			return target = event.target || event.srcElement; 
+		},
+	getRelatedTarget: function(event){
+		if(event.relatedTarget){
+			return event.relatedTarget;
+			}
+		else if(event.type == 'mouseout' && event.toElement){
+			return event.toElement;
+			}
+		else if(event.type == 'mouseover' && event.fromElement){
+			return event.fromElement;			
+			}
+		else{
+			return null;
+			}
+		}
+	};
+
+ var oUl = document.getElementsByTagName('ul')[0];
+ var oLi = oUl.getElementsByTagName('li');
+ var otest = document.getElementById('test');
+ for(var i = 0; i < oLi.length; i++){
+ oLi[i].onmouseover = function(e){
+        var e = EventUtil.getEvent(e);
+		var rel = EventUtil.getRelatedTarget(e);
+		var tar = EventUtil.getTarget(e);
+		while(rel && rel != this){
+			rel = rel.parentNode;
+			}
+		if(rel != this){
+         otest.innerHTML = otest.innerHTML - 0 + 1;
+			}
+		 }}
+</script>
+</body>

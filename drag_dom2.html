@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<script type="text/javascript" src="js/event.js"></script>
+<script type="text/javascript" src="js/dragDrop.js"></script>
+<style type="text/css">
+    .draggable{
+        position:absolute;
+        width:100px;
+        height:100px;
+        top:100px;
+        left:100px;
+        cursor:move;
+        background-color:#c00;
+        overflow: hidden;
+    }
+
+</style>
+</head>
+<body>
+<div style="height:1500px"></div>
+<div id="rounder" class="draggable">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+<script type="text/javascript">
+    DragDrop.enable();
+</script>
+</body>
+</html>

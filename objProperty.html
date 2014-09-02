@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>你好</title>
+    <script type="text/javascript" src="js/dom.js"></script>
+    <script type="text/javascript" src="js/whenReady.js"></script>
+    <style type="text/css">
+        body{ margin:0; padding:0;}
+        .wrap{position:absolute; width:800px; left:100px; top:0px; height:500px;}
+    </style>
+</head>
+<body>
+<div class="wrap" id="wrap">
+</div>
+<script type="text/javascript">
+    whenReady(function(){
+        var oBox = Dom.$("wrap");
+        oBox.length = 0;
+        for(var pro in oBox){
+            if(pro == 'innerHTML') continue;
+            if(pro == 'outerHTML') continue;
+            oBox.length++;
+            if(typeof oBox[pro] == 'object'){
+                oBox.innerHTML += "<span style=\"color:#8a2be2;\">" + "oBox." + pro + ': ' + oBox[pro] +"</span>" + "<br>"
+            }
+            else if(typeof oBox[pro] == 'function'){
+                oBox.innerHTML += "<span style=\"color:red\">" + "oBox." + pro + ': ' + oBox[pro] +"</span>" + "<br>"
+            }
+            else if(typeof oBox[pro] == 'string'){
+                oBox.innerHTML += "<span style=\"color:green\">" + "oBox." + pro + ': ' + oBox[pro] +"</span>" + "<br>"
+            }
+            else if(typeof oBox[pro] == 'number'){
+                oBox.innerHTML += "<span style=\"color:orange;font-weight:bold;\">" + "oBox." + pro + ': ' + oBox[pro] +"</span>" + "<br>"
+            }
+            else if(typeof oBox[pro] == 'boolean'){
+                oBox.innerHTML += "<span style=\"color:#FF8AB7;\">" + "oBox." + pro + ': ' + oBox[pro] +"</span>" + "<br>"
+            }
+            else{
+                oBox.innerHTML += "<span style=\"color:#000000; \">" + "oBox." + pro + ': ' + oBox[pro] +"</span>" + "<br>"
+            }
+        }
+    })
+</script>
+<div style="width:3000px; border-bottom:1px solid #f00;"></div>
+</body>
+</html>

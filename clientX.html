@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+ *{ margin:0; padding:0;}
+ html{}
+ body{}
+ #img{ position:absolute;border-left:10px solid yellow; margin-left:10px;}
+</style>
+</head>
+<body>
+<div style=" width:960px; height:1200px; margin:0 auto; border:1px solid #ccc;">
+<img id='img' src="I/2-23_rz_head_bg.png" width="200" height="150" alt=" " />
+</div>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+
+<script type="text/javascript">
+var oImg = document.getElementById('img');
+document.onclick = function(e){
+    e = e || event;
+    x = e.clientX;
+    y = e.clientY;
+	disX = x - oImg.offsetLeft;
+	disY = y - oImg.offsetHeight;
+	if(e.pageX){
+		oImg.style.left = e.pageX + 'px';
+		oImg.style.top = e.pageY + 'px';
+		return;
+		}
+   oImg.style.left = x + document.body.scrollLeft + disX + 'px';
+   oImg.style.top = y + (document.documentElement && document.documentElement.scrollTop) || (document.body && document.body.scrollTop) || 0 + 'px';
+
+    }
+</script>
+</body>

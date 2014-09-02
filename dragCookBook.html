@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<script type="text/javascript" src="js/DHTML3API.JS"></script>
+<script type="text/javascript" src="js/eventsManager.js"></script>
+<script type="text/javascript" src="js/dom.js"></script>
+<script type="text/javascript" src="js/event.js"></script>
+<script type="text/javascript" src="js/dragManager.js"></script>
+<style type="text/css">
+	.box{ width:960px; height:100px; border:10px solid red; border-radius:10px; margin:0 auto; position:absolute;}
+</style>
+</head>
+<body>
+<div style="height:1500px"></div>
+<div id="rounder" style="width:100px; left:100px; cursor:move; top:100px; height:100px; background-color:#c00; position:absolute;" class="draggable"></div>
+<script type="text/javascript">
+DHTMLAPI.init();
+addOnLoadEvent(dragObject.init);
+</script>
+</body>
+</html>

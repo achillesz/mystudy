@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>无标题文档</title>
+<style type="text/css">
+ * { margin:0; padding:0;}
+ body{ font: normal 12px/1.5 宋体;}
+ ul,li{ list-style:none;}
+ a img{ border:none;}
+ .slide{ position:relative; width:564px; height:295px; margin:50px auto; overflow:hidden; border:1px solid #ccc;}
+ .slide .slide_img{ position:absolute;width:564px; overflow: hidden;left:0; top:0;}
+ .slide .slide_img li{ float:left; display:inline;}
+ .slide .slide_img img{ display:block;}
+ .slide .slide_num{ position:absolute; z-index:2; right:0; bottom:0; height:22px; }
+ .slide .slide_tit{ position:absolute; z-index:1;left:0; bottom:0;width:564px;height:30px; line-height:30px; background-color:#000; opacity:0.7; filter:alpha(opacity=70); overflow:hidden;}
+ .slide .slide_tit li{ text-indent:20px; height:30px;}
+ .slide .slide_tit li a:link,.slide .slide_tit li a:visited{ color:#fff; font:bold 18px/30px 'microsoft yahei'; text-decoration:none;}
+ .slide .slide_tit li a:hover,.slide .slide_tit li a:focus{ color:red;}
+ .slide .slide_num li{ float:left; display:inline; width:15px; height:18px; background-color:#f00; color:#fff; margin-right:10px; text-align:center; cursor:pointer;}
+ .slide .slide_num .current_num{ background-color:#fff; color:red;}
+</style>
+</head>
+<body>
+<div id="slide" class="slide">
+<ul class="slide_img" id="slide_img">
+<Li><a href="#"><img src="I/focus_fou.jpg" width="564" height="295" alt=" "></a></Li>
+<li><a href="#"><img src="I/focus_one.jpg" width="564" height="295" alt=" "></a></li>
+<li><a href="#"><img src="I/focus_thr.jpg" width="564" height="295" alt=" "></a></li>
+<Li><a href="#"><img src="I/focus_two.jpg" width="564" height="295" alt=" "></a></Li>
+</ul>
+<ul class="slide_tit"><li><a href="#">标题内容1</a></li><li><a href="#">标题内容2</a></li><li><a href="#">标题内容3</a></li><li><a href="#">标题内容4</a></li></ul>
+<ul class="slide_num">
+<li class="current_num">1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+</div>
+<div style=" width:100px; height:100px; background-color:#ccc;" onClick="abc()"></div>
+<script type="text/javascript">
+	function getRealStyle(id,styleName){
+		var elem = document.getElementById(id);
+		var realStyle = null;
+		if(elem.currentStyle){
+			realStyle = elem.currentStyle[styleName];
+			}
+		else if(window.getComputedStyle){
+			realStyle = window.getComputedStyle(elem,null)[styleName];
+			}
+		return realStyle;
+		}
+	function doit(target,obj,prop){
+		var nowProp = getRealStyle(obj,prop);
+		nowProp = parseInt(nowProp);
+		var speed = (target - nowProp)/15;
+		speed = speed>0?Math.ceil(speed):Math.floor(speed);
+		if(nowProp == target) {
+			 clearInterval(time1);
+			}
+		var elem = document.getElementById(obj);
+		elem.style[prop] = nowProp + speed + "px";
+		}
+	function slide(){
+		clearInterval(time1);
+		if(on == len - 1){ on = 0}
+		else{ on++ }
+		time1 = setInterval(function(){doit(-on*step,'slide_img','top')},30);
+		for(var i = 0;i < len;i++){
+			oTitLi[i].style.display = 'none';
+			oNumLi[i].className = '';
+			}
+		oTitLi[on].style.display = 'block';
+		oNumLi[on].className = 'current_num';
+		}
+	var elem = document.getElementById('slide');
+	var oCon = elem.getElementsByTagName('ul')[0];
+	var oTit = elem.getElementsByTagName('ul')[1];
+	var oNum = elem.getElementsByTagName('ul')[2];
+	var oConLi = oCon.getElementsByTagName('li');
+	var oTitLi = oTit.getElementsByTagName('li');
+	var oNumLi = oNum.getElementsByTagName('li');
+	var len = oConLi.length;
+	var step = oConLi[0].offsetHeight;
+	var time = null;
+	var time1 = null;
+	var on = 0;
+	for(var i =0; i < len; i++){
+		oNumLi[i].i = i;
+		oNumLi[i].onclick = function(){
+			 clearInterval(time);
+			 clearInterval(time1);
+			 on = this.i - 1;
+			 slide();
+			 time = setInterval(slide,4000);
+			}
+		}
+	time = setInterval(slide,4000);
+</script>
+</body>
+</html>

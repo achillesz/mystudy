@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="gb2312">
+    <title></title>
+    <script type="text/javascript" src="js/dom.js"></script>
+    <script type="text/javascript" src="js/event.js"></script>
+    <script type="text/javascript" src="js/whenReady.js"></script>
+    <style type="text/css">
+        .ele1{ position:absolute; left:0; top:0; width:50px; height:50px; background-color:#000; COLOR:#FFF; }
+    </style>
+</head>
+<body>
+<div id="ele1" class="ele1">你好：</div>
+<script type="text/javascript">
+  var elem = Dom.$('ele1');
+
+  function funcA(){
+        elem.style.left = elem.offsetLeft + 1 + 'px';
+        setTimeout(funcA,1)
+  }
+  whenReady(funcA)
+</script>
+</body>
+</html>
